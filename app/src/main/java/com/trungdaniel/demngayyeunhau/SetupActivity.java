@@ -7,6 +7,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,6 +39,10 @@ public class SetupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_setup);
         initView();
         imgChooseDate.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +69,7 @@ public class SetupActivity extends AppCompatActivity {
         final String tenBan = edTenBan.getText().toString();
         final String tenNguoiAy = edTenNguoiAy.getText().toString();
         final Date dateStart = sdf.parse(edDate.getText().toString());
-        User user = new User(1,edTenBan.getText().toString(),edTenNguoiAy.getText().toString(), sdf.parse(edDate.getText().toString()));
+        User user = new User(1, edTenBan.getText().toString(), edTenNguoiAy.getText().toString(), sdf.parse(edDate.getText().toString()));
         if (userDAO.inserUser(user) > 0) {
             Toast.makeText(SetupActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SetupActivity.this, MainActivity.class);

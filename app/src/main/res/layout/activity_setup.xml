@@ -1,97 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="5dp"
-    tools:context=".SetupActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/heart" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_background"></ImageView>
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp"
+        tools:context=".SetupActivity">
 
-
-        <com.google.android.material.textfield.TextInputLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edTenBan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên bạn"
-                android:inputType="text"
-                android:textColor="@color/mauhongnhat"
-                android:textStyle="bold" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edTenNguoiAy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên người ấy"
-                android:inputType="text"
-                android:textColor="@color/mauhongnhat"
-                android:textStyle="bold" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_height="wrap_content"
+            android:src="@drawable/heart" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="100dp"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
+
+            <EditText
+                android:id="@+id/edTenBan"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginHorizontal="40sp"
+                android:background="@drawable/edt_text_input"
+                android:fontFamily="@font/iciel_panton_light"
+                android:hint="Tên bạn"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textColor="@color/Color_White"
+                android:textColorHint="@color/Color_White"
+                android:textSize="15dp" />
+
+
+            <EditText
+                android:id="@+id/edTenNguoiAy"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginHorizontal="40sp"
+                android:layout_marginVertical="15sp"
+                android:background="@drawable/edt_text_input"
+                android:fontFamily="@font/iciel_panton_light"
+                android:hint="Tên người ấy"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textColor="@color/Color_White"
+                android:textColorHint="@color/Color_White"
+                android:textSize="15dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5">
+                android:layout_marginHorizontal="40sp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
 
                 <EditText
                     android:id="@+id/edDateStart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Chọn ngày hai bạn yêu nhau"
-                    android:imeOptions="actionDone"
-                    android:inputType="date"
-                    android:textColor="@color/mauhongnhat"
-                    android:textStyle="bold" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_width="0dp"
+                    android:layout_height="40sp"
+                    android:layout_weight="3"
+                    android:background="@drawable/edt_text_input"
+                    android:fontFamily="@font/iciel_panton_light"
+                    android:hint="nhấn bên cạnh để chọn ngày bắt đầu"
+                    android:inputType="text"
+                    android:padding="5dp"
+                    android:textColor="@color/Color_White"
+                    android:textColorHint="@color/Color_White"
+                    android:textSize="12dp" />
 
-            <ImageView
-                android:id="@+id/imgChooseDate"
-                android:layout_width="0dp"
+
+                <ImageView
+                    android:id="@+id/imgChooseDate"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_carlender" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_carlender" />
+                android:layout_marginLeft="40sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btnsetup"
+                android:fontFamily="@font/iciel_panton_black"
+                android:text="Bắt đầu"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btnsetup"
-            android:text="Khởi tạo"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
-
     </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

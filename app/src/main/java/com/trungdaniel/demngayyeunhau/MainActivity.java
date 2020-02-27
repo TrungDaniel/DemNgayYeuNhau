@@ -11,12 +11,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.trungdaniel.demngayyeunhau.database.UserDAO;
 import com.trungdaniel.demngayyeunhau.model.User;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,12 +36,13 @@ import me.itangqi.waveloadingview.WaveLoadingView;
 public class MainActivity extends AppCompatActivity {
 
     TextView tenNam, tenNu, dayStart, tvYear, tvMonth, tvDay, tvHour, tvMinute, tvSeconds;
-    CircularImageView imgNam,imgNu;
+    CircularImageView imgNam, imgNu;
     UserDAO userDAO;
     WaveLoadingView mWaveLoadingView;
     Uri imgAvatarUri;
     Bitmap resizedBitmap = null;
     public static final int PICK_IMAGE = 1;
+    private Snackbar snackbar;
     @SuppressLint("SimpleDateFormat")
     static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -43,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         userDAO = new UserDAO(this);
         initView();
+        notificationLoveService();
         imgNam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,11 +101,14 @@ public class MainActivity extends AppCompatActivity {
         }.execute();
     }
 
+    private void notificationLoveService() {
+        startService(new Intent(this, LoveService.class));
+    }
+
     private void chooseImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+        Snackbar.make(findViewById(R.id.layout_main), "Chức năng đang được phát triển ", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+
     }
 
     private void initView() {
@@ -110,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         imgNam = findViewById(R.id.anhNam);
         imgNu = findViewById(R.id.anhNu);
         mWaveLoadingView = findViewById(R.id.waveLoadingView);
+
     }
 
     @SuppressLint("StaticFieldLeak")
