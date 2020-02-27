@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#f489ad</color>
+    <color name="colorAccent">#ee5e5e</color>
+    <color name="mauhongnhat">#ee5e5e</color>
+    <color name="white">#fff</color>
+    <color name="hongdam">#e74c3c</color>
+    <color name="spanscreen">#de5d54</color>
+    <color name="background">#f489ad</color>
+</resources>
